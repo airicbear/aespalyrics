@@ -2,19 +2,17 @@ package com.etndevel.aespalyrics
 
 import androidx.recyclerview.widget.RecyclerView
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
-
-import com.etndevel.aespalyrics.placeholder.PlaceholderContent.PlaceholderItem
+import androidx.core.content.ContextCompat
+import com.etndevel.aespalyrics.album.Album
 import com.etndevel.aespalyrics.databinding.FragmentMainBinding
 
 /**
- * [RecyclerView.Adapter] that can display a [PlaceholderItem].
- * TODO: Replace the implementation with code for your data type.
+ * [RecyclerView.Adapter] that can display a [Album].
  */
 class MainRecyclerViewAdapter(
-    private val values: List<PlaceholderItem>
+    private val albumList: List<Album>
 ) : RecyclerView.Adapter<MainRecyclerViewAdapter.ViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
@@ -30,20 +28,20 @@ class MainRecyclerViewAdapter(
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        val item = values[position]
-        holder.idView.text = item.id
-        holder.contentView.text = item.content
+        val albumItem = albumList[position]
+        holder.albumItem.text = albumItem.title
+        holder.albumDate.text = albumItem.releaseDate.year.toString()
+
+        val albumCoverArt = ContextCompat.getDrawable(holder.albumItem.context, albumItem.imageId)
+        albumCoverArt?.setBounds(0, 0, 100, 100)
+        holder.albumItem.setCompoundDrawables(albumCoverArt, null, null, null)
     }
 
-    override fun getItemCount(): Int = values.size
+    override fun getItemCount(): Int = albumList.size
 
     inner class ViewHolder(binding: FragmentMainBinding) : RecyclerView.ViewHolder(binding.root) {
-        val idView: TextView = binding.itemNumber
-        val contentView: TextView = binding.content
-
-        override fun toString(): String {
-            return super.toString() + " '" + contentView.text + "'"
-        }
+        val albumItem: TextView = binding.albumItem
+        val albumDate: TextView = binding.albumDate
     }
 
 }

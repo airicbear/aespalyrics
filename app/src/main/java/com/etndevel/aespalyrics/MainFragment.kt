@@ -8,7 +8,7 @@ import androidx.recyclerview.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.etndevel.aespalyrics.placeholder.PlaceholderContent
+import com.etndevel.aespalyrics.album.AlbumContent
 
 /**
  * A fragment representing a list of Items.
@@ -38,7 +38,7 @@ class MainFragment : Fragment() {
                     columnCount <= 1 -> LinearLayoutManager(context)
                     else -> GridLayoutManager(context, columnCount)
                 }
-                adapter = MainRecyclerViewAdapter(PlaceholderContent.ITEMS)
+                adapter = MainRecyclerViewAdapter(AlbumContent.ALBUMS)
             }
         }
         return view

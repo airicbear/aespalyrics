@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/mainFragment"
-        android:name="com.etndevel.aespalyrics.MainFragment"
+        android:name="com.etndevel.aespalyrics.fragments.MainFragment"
         android:label="@string/app_name"
         tools:layout="@layout/fragment_main_list" >
         <action
@@ -16,12 +16,12 @@
     </fragment>
     <fragment
         android:id="@+id/albumFragment"
-        android:name="com.etndevel.aespalyrics.AlbumFragment"
+        android:name="com.etndevel.aespalyrics.fragments.AlbumFragment"
         android:label="{albumTitle}"
         tools:layout="@layout/fragment_album_list">
         <argument
             android:name="album"
-            app:argType="com.etndevel.aespalyrics.album.Album" />
+            app:argType="com.etndevel.aespalyrics.model.Album" />
         <argument
             android:name="albumTitle"
             android:defaultValue="Black Mamba"

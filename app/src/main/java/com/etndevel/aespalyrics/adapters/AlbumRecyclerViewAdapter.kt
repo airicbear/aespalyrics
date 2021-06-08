@@ -1,10 +1,10 @@
-package com.etndevel.aespalyrics
+package com.etndevel.aespalyrics.adapters
 
 import androidx.recyclerview.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.core.content.ContextCompat
-import com.etndevel.aespalyrics.album.Album
+import com.etndevel.aespalyrics.model.Album
 import com.etndevel.aespalyrics.databinding.FragmentAlbumBinding
 
 class AlbumRecyclerViewAdapter(

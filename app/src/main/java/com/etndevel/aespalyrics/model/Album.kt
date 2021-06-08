@@ -1,4 +1,4 @@
-package com.etndevel.aespalyrics.album
+package com.etndevel.aespalyrics.model
 
 import android.os.Parcel
 import android.os.Parcelable

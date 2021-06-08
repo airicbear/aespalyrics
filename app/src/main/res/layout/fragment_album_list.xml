@@ -8,5 +8,5 @@
     android:layout_height="match_parent"
     android:clipToPadding="false"
     app:layoutManager="LinearLayoutManager"
-    tools:context=".AlbumFragment"
+    tools:context=".fragments.AlbumFragment"
     tools:listitem="@layout/fragment_album" />

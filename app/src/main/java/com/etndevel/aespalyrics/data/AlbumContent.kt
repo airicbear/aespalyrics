@@ -1,6 +1,7 @@
-package com.etndevel.aespalyrics.album
+package com.etndevel.aespalyrics.data
 
 import com.etndevel.aespalyrics.R
+import com.etndevel.aespalyrics.model.Album
 import java.time.LocalDate
 
 object AlbumContent {

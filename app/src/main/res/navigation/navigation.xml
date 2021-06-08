@@ -8,6 +8,23 @@
     <fragment
         android:id="@+id/mainFragment"
         android:name="com.etndevel.aespalyrics.MainFragment"
-        android:label="fragment_main_list"
-        tools:layout="@layout/fragment_main_list" />
+        android:label="@string/app_name"
+        tools:layout="@layout/fragment_main_list" >
+        <action
+            android:id="@+id/action_mainFragment_to_albumFragment"
+            app:destination="@id/albumFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/albumFragment"
+        android:name="com.etndevel.aespalyrics.AlbumFragment"
+        android:label="{albumTitle}"
+        tools:layout="@layout/fragment_album_list">
+        <argument
+            android:name="album"
+            app:argType="com.etndevel.aespalyrics.album.Album" />
+        <argument
+            android:name="albumTitle"
+            android:defaultValue="Black Mamba"
+            app:argType="string" />
+    </fragment>
 </navigation>

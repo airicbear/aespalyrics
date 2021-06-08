@@ -1,10 +1,11 @@
-package com.etndevel.aespalyrics
+package com.etndevel.aespalyrics.activities
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.setupActionBarWithNavController
+import com.etndevel.aespalyrics.R
 import com.etndevel.aespalyrics.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {

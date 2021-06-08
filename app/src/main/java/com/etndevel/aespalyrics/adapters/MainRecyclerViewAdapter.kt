@@ -1,14 +1,21 @@
 package com.etndevel.aespalyrics.adapters
 
+import android.content.Intent
 import androidx.recyclerview.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.core.content.ContextCompat
+import androidx.core.content.ContextCompat.startActivity
+import androidx.navigation.NavDirections
 import androidx.navigation.findNavController
+import com.beust.klaxon.Klaxon
+import com.etndevel.aespalyrics.activities.SongActivity
 import com.etndevel.aespalyrics.model.Album
 import com.etndevel.aespalyrics.databinding.FragmentMainBinding
 import com.etndevel.aespalyrics.fragments.MainFragmentDirections
+import com.etndevel.aespalyrics.model.Song
+import com.etndevel.aespalyrics.utils.Utils
 import com.google.android.material.card.MaterialCardView
 
 /**
@@ -35,8 +42,23 @@ class MainRecyclerViewAdapter(
 
         // Card
         holder.albumCard.setOnClickListener {
-            val action = MainFragmentDirections.actionMainFragmentToAlbumFragment(album, album.title ?: "Black Mamba")
-            holder.albumCard.findNavController().navigate(action)
+            val action: NavDirections
+            if (album.lyricsPaths?.size ?: 0 > 1) {
+                action = MainFragmentDirections.actionMainFragmentToAlbumFragment(
+                    album,
+                    album.title ?: "Black Mamba"
+                )
+                holder.albumCard.findNavController().navigate(action)
+            } else {
+                val rawString = Utils.readTextAsset(holder.albumCard.context, album.lyricsPaths?.first()!!)
+                val song = Klaxon()
+                    .parse<Song>(rawString)
+
+                val intent = Intent(holder.albumCard.context, SongActivity::class.java).apply {
+                    putExtra("song", song)
+                }
+                holder.albumCard.context.startActivity(intent)
+            }
         }
 
         // Title

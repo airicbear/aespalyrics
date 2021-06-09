@@ -1,5 +1,6 @@
 package com.etndevel.aespalyrics.adapters
 
+import android.text.Html
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
@@ -24,7 +25,7 @@ class LyricsRecyclerViewAdapter(private val lyrics: List<String>) :
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        holder.lyricContent.text = lyrics[position]
+        holder.lyricContent.text = Html.fromHtml(lyrics[position], Html.FROM_HTML_MODE_COMPACT)
     }
 
     override fun getItemCount(): Int = lyrics.size

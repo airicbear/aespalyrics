@@ -1,6 +1,9 @@
 package com.etndevel.aespalyrics.activities
 
+import android.content.Context
 import android.os.Bundle
+import android.util.AttributeSet
+import android.view.View
 import com.google.android.material.tabs.TabLayout
 import androidx.viewpager.widget.ViewPager
 import androidx.appcompat.app.AppCompatActivity
@@ -15,13 +18,15 @@ class SongActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
+        val song = intent.getParcelableExtra<Song>("song") ?: Song("", HashMap())
+
         binding = ActivitySongBinding.inflate(layoutInflater)
+        binding.title.text = song.title
         setContentView(binding.root)
 
-        val song = intent.getParcelableExtra<Song>("song")
         val sectionsPagerAdapter = SongPagerAdapter(
             supportFragmentManager,
-            song!!
+            song
         )
         val viewPager: ViewPager = binding.viewPager
         viewPager.adapter = sectionsPagerAdapter

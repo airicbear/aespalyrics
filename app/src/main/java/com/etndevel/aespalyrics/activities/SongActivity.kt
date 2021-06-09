@@ -1,9 +1,6 @@
 package com.etndevel.aespalyrics.activities
 
-import android.content.Context
 import android.os.Bundle
-import android.util.AttributeSet
-import android.view.View
 import com.google.android.material.tabs.TabLayout
 import androidx.viewpager.widget.ViewPager
 import androidx.appcompat.app.AppCompatActivity
@@ -22,6 +19,7 @@ class SongActivity : AppCompatActivity() {
 
         binding = ActivitySongBinding.inflate(layoutInflater)
         binding.title.text = song.title
+
         setContentView(binding.root)
 
         val sectionsPagerAdapter = SongPagerAdapter(

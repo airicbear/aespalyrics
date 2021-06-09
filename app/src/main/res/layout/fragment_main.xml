@@ -5,7 +5,9 @@
     android:layout_height="wrap_content"
     android:layout_width="match_parent"
     android:clickable="true"
-    android:id="@+id/album_card">
+    android:id="@+id/album_card"
+    app:cardCornerRadius="0dp"
+    app:cardElevation="0dp">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"

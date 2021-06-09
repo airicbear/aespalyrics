@@ -1,36 +1,27 @@
 package com.etndevel.aespalyrics.adapters
 
-import android.content.Context
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentPagerAdapter
-import com.etndevel.aespalyrics.R
-import com.etndevel.aespalyrics.fragments.PlaceholderFragment
-
-private val TAB_TITLES = arrayOf(
-    R.string.tab_text_1,
-    R.string.tab_text_2
-)
+import com.etndevel.aespalyrics.fragments.SongFragment
+import com.etndevel.aespalyrics.model.Song
 
 /**
  * A [FragmentPagerAdapter] that returns a fragment corresponding to
  * one of the sections/tabs/pages.
  */
-class SectionsPagerAdapter(private val context: Context, fm: FragmentManager) :
+class SectionsPagerAdapter(fm: FragmentManager, private val song: Song) :
     FragmentPagerAdapter(fm) {
 
     override fun getItem(position: Int): Fragment {
-        // getItem is called to instantiate the fragment for the given page.
-        // Return a PlaceholderFragment (defined as a static inner class below).
-        return PlaceholderFragment.newInstance(position + 1)
+        return SongFragment.newInstance(song.lyrics.values.toList()[position].toTypedArray())
     }
 
     override fun getPageTitle(position: Int): CharSequence {
-        return context.resources.getString(TAB_TITLES[position])
+        return song.lyrics.keys.toList()[position]
     }
 
     override fun getCount(): Int {
-        // Show 2 total pages.
-        return 2
+        return song.lyrics.entries.size
     }
 }

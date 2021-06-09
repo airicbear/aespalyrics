@@ -6,15 +6,11 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.etndevel.aespalyrics.databinding.FragmentSongBinding
 import com.etndevel.aespalyrics.viewmodels.PageViewModel
 
-/**
- * A placeholder fragment containing a simple view.
- */
-class PlaceholderFragment : Fragment() {
+class SongFragment : Fragment() {
 
     private lateinit var pageViewModel: PageViewModel
     private var _binding: FragmentSongBinding? = null
@@ -26,7 +22,7 @@ class PlaceholderFragment : Fragment() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         pageViewModel = ViewModelProvider(this).get(PageViewModel::class.java).apply {
-            setIndex(arguments?.getInt(ARG_SECTION_NUMBER) ?: 1)
+            setLanguage(arguments?.getInt(LYRICS) ?: 1)
         }
     }
 
@@ -50,17 +46,17 @@ class PlaceholderFragment : Fragment() {
          * The fragment argument representing the section number for this
          * fragment.
          */
-        private const val ARG_SECTION_NUMBER = "section_number"
+        private const val LYRICS = "lyrics"
 
         /**
          * Returns a new instance of this fragment for the given section
          * number.
          */
         @JvmStatic
-        fun newInstance(sectionNumber: Int): PlaceholderFragment {
-            return PlaceholderFragment().apply {
+        fun newInstance(lyrics: Array<String>): SongFragment {
+            return SongFragment().apply {
                 arguments = Bundle().apply {
-                    putInt(ARG_SECTION_NUMBER, sectionNumber)
+                    putStringArray(LYRICS, lyrics)
                 }
             }
         }

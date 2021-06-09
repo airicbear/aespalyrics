@@ -4,17 +4,16 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.RecyclerView
 import com.etndevel.aespalyrics.adapters.LyricsRecyclerViewAdapter
 import com.etndevel.aespalyrics.databinding.FragmentSongBinding
-import com.etndevel.aespalyrics.viewmodels.PageViewModel
+import com.etndevel.aespalyrics.viewmodels.LyricsViewModel
 
 class SongFragment : Fragment() {
 
-    private lateinit var pageViewModel: PageViewModel
+    private lateinit var pageViewModel: LyricsViewModel
     private var _binding: FragmentSongBinding? = null
 
     // This property is only valid between onCreateView and
@@ -23,7 +22,7 @@ class SongFragment : Fragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        pageViewModel = ViewModelProvider(this).get(PageViewModel::class.java).apply {
+        pageViewModel = ViewModelProvider(this).get(LyricsViewModel::class.java).apply {
             setLanguage(arguments?.getStringArray(LYRICS)?.toList() ?: listOf())
         }
     }

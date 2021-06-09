@@ -5,14 +5,14 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.Transformations
 import androidx.lifecycle.ViewModel
 
-class PageViewModel : ViewModel() {
+class LyricsViewModel : ViewModel() {
 
-    private val _language = MutableLiveData<List<String>>()
-    val text: LiveData<String> = Transformations.map(_language) {
+    private val _lyrics = MutableLiveData<List<String>>()
+    val text: LiveData<String> = Transformations.map(_lyrics) {
         it.toString()
     }
 
     fun setLanguage(lyrics: List<String>) {
-        _language.value = lyrics
+        _lyrics.value = lyrics
     }
 }

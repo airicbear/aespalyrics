@@ -7,12 +7,12 @@ import androidx.lifecycle.ViewModel
 
 class PageViewModel : ViewModel() {
 
-    private val _language = MutableLiveData<Int>()
+    private val _language = MutableLiveData<List<String>>()
     val text: LiveData<String> = Transformations.map(_language) {
-        "Hello world from section: $it"
+        it.toString()
     }
 
-    fun setLanguage(index: Int) {
-        _language.value = index
+    fun setLanguage(lyrics: List<String>) {
+        _language.value = lyrics
     }
 }

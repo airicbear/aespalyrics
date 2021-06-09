@@ -7,6 +7,8 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import androidx.recyclerview.widget.RecyclerView
+import com.etndevel.aespalyrics.adapters.LyricsRecyclerViewAdapter
 import com.etndevel.aespalyrics.databinding.FragmentSongBinding
 import com.etndevel.aespalyrics.viewmodels.PageViewModel
 
@@ -22,7 +24,7 @@ class SongFragment : Fragment() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         pageViewModel = ViewModelProvider(this).get(PageViewModel::class.java).apply {
-            setLanguage(arguments?.getInt(LYRICS) ?: 1)
+            setLanguage(arguments?.getStringArray(LYRICS)?.toList() ?: listOf())
         }
     }
 
@@ -34,9 +36,10 @@ class SongFragment : Fragment() {
         _binding = FragmentSongBinding.inflate(inflater, container, false)
         val root = binding.root
 
-        val textView: TextView = binding.sectionLabel
+        val recyclerView: RecyclerView = binding.lyricsList
         pageViewModel.text.observe(viewLifecycleOwner) {
-            textView.text = it
+            val lyrics = arguments?.getStringArray(LYRICS)?.toList()
+            recyclerView.adapter = LyricsRecyclerViewAdapter(lyrics ?: listOf("No lyrics found."))
         }
         return root
     }

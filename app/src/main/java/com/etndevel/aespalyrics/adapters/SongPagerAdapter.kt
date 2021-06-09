@@ -10,7 +10,7 @@ import com.etndevel.aespalyrics.model.Song
  * A [FragmentPagerAdapter] that returns a fragment corresponding to
  * one of the sections/tabs/pages.
  */
-class SectionsPagerAdapter(fm: FragmentManager, private val song: Song) :
+class SongPagerAdapter(fm: FragmentManager, private val song: Song) :
     FragmentPagerAdapter(fm) {
 
     override fun getItem(position: Int): Fragment {

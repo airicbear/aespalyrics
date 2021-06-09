@@ -4,7 +4,7 @@ import android.os.Bundle
 import com.google.android.material.tabs.TabLayout
 import androidx.viewpager.widget.ViewPager
 import androidx.appcompat.app.AppCompatActivity
-import com.etndevel.aespalyrics.adapters.SectionsPagerAdapter
+import com.etndevel.aespalyrics.adapters.SongPagerAdapter
 import com.etndevel.aespalyrics.databinding.ActivitySongBinding
 import com.etndevel.aespalyrics.model.Song
 
@@ -19,7 +19,7 @@ class SongActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         val song = intent.getParcelableExtra<Song>("song")
-        val sectionsPagerAdapter = SectionsPagerAdapter(
+        val sectionsPagerAdapter = SongPagerAdapter(
             supportFragmentManager,
             song!!
         )
